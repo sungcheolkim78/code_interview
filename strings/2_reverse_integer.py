@@ -14,6 +14,9 @@ class Solution:
             v.append(ten_pow * reverse_digits.pop())
             ten_pow *= 10
 
+        if sum(v) > 2**31 - 1:
+            return 0
+
         return negative * sum(v)
 
 

@@ -1,0 +1,46 @@
+from typing import List
+
+
+class Solution:
+    def nextPermutation(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        i = len(nums) - 2
+        while i >= 0 and nums[i + 1] <= nums[i]:
+            i -= 1
+
+        if i >= 0:
+            j = len(nums) - 1
+            while nums[j] <= nums[i]:
+                j -= 1
+            self.swap(nums, i, j)
+        self.reverse(nums, i + 1)
+
+    def swap(self, nums, i, j):
+        temp = nums[i]
+        nums[i] = nums[j]
+        nums[j] = temp
+
+    def reverse(self, nums, start):
+        i, j = start, len(nums) - 1
+        while i < j:
+            self.swap(nums, i, j)
+            i += 1
+            j -= 1
+
+
+if __name__ == '__main__':
+    solution = Solution()
+
+    nums = [1, 2, 3]
+    solution.nextPermutation(nums)
+    print(nums)
+
+    nums = [1, 2, 3, 4]
+    solution.nextPermutation(nums)
+    print(nums)
+
+    nums = [1, 3, 2, 4]
+    solution.nextPermutation(nums)
+    print(nums)

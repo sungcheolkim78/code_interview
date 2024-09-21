@@ -21,18 +21,19 @@ def build_tree(values: list) -> Optional[TreeNode]:
         curr = queue.popleft()
 
         if i < len(values):
-            if values[i]:
+            if values[i] is not None:
                 curr.left = TreeNode(values[i])
                 queue.append(curr.left)
             i += 1
 
         if i < len(values):
-            if values[i]:
+            if values[i] is not None:
                 curr.right = TreeNode(values[i])
                 queue.append(curr.right)
             i += 1
 
     return root
+
 
 def print_tree(root: Optional[TreeNode]):
     if not root:
@@ -41,8 +42,14 @@ def print_tree(root: Optional[TreeNode]):
     print("Tree:", end=" ")
     q = deque([root])
     order = 0
+    visited = set()
+
     while q:
         curr = q.popleft()
+
+        if curr in visited:
+            break
+        visited.add(curr)
         print(f"{curr.val}({order})", end=" ")
 
         if curr.left:
@@ -52,6 +59,26 @@ def print_tree(root: Optional[TreeNode]):
         if curr.left or curr.right:
             order += 1
     print("")
+
+
+def print_doubly_linked_list(head: Optional[TreeNode]):
+    if not head:
+        return
+
+    values = []
+    visited = set()
+    q = deque([head])
+
+    while q:
+        curr = q.popleft()
+        if curr in visited:
+            break
+        visited.add(curr)
+        values.append(str(curr.val))
+        if curr.right:
+            q.append(curr.right)
+
+    print("->".join(values))
 
 
 class Node:

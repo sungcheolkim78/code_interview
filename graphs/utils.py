@@ -54,6 +54,12 @@ def print_tree(root: Optional[TreeNode]):
     print("")
 
 
+class Node:
+    def __init__(self, val = 0, neighbors = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+
+
 if __name__ == '__main__':
     root = build_tree([1, 2, 3])
     print_tree(root)

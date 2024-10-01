@@ -7,25 +7,25 @@ class Solution:
 
         for i in range(len(nums)):
             if nums[i] > 0:
-                return res
+                break
 
-            res_two_sum = self.twoSum(nums[i+1:], target=-nums[i])
-            for res_two_sum_i in res_two_sum:
-                res_three_sum = [nums[i]] + res_two_sum_i
-                if res_three_sum not in res:
-                    res.append(res_three_sum)
+            if i == 0 or nums[i - 1] != nums[i]:
+                self.twoSum(nums, i, res)
 
         return res
 
-    def twoSum(self, nums: List[int], target: int) -> List[List[int]]:
-        res = []
-        target_dict = {target - nums[i]: i for i in range(len(nums))}
+    def twoSum(self, nums: List[int], i: int, res: List[List[int]]) -> None:
+        seen = set()
+        j = i + 1
 
-        for i in range(len(nums)):
-            if nums[i] in target_dict and i < target_dict[nums[i]]:
-                res.append([nums[i], target - nums[i]])
-
-        return res
+        while j < len(nums):
+            complement = -nums[i] - nums[j]
+            if complement in seen:
+                res.append([nums[i], nums[j], complement])
+                while j + 1 < len(nums) and nums[j] == nums[j + 1]:
+                    j += 1
+            seen.add(nums[j])
+            j += 1
 
 
 if __name__ == '__main__':

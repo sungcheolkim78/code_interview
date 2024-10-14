@@ -25,11 +25,32 @@ class Solution:
 
         return count
 
+    def subarraySum3(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        count = 0
+        dict_cumsum = {}
+        curr_sum = 0
+
+        for i in range(n):
+            curr_sum += nums[i]
+            if curr_sum == k:
+                count += 1
+
+            if curr_sum - k in dict_cumsum:
+                count += dict_cumsum[curr_sum -k]
+
+            if curr_sum in dict_cumsum:
+                dict_cumsum[curr_sum] += 1
+            else:
+                dict_cumsum[curr_sum] = 1
+
+        return count
+
 
 if __name__ == '__main__':
     sol = Solution()
     nums, k = [1, 1, 1], 2
-    print(sol.subarraySum(nums, k))
+    print(sol.subarraySum3(nums, k))
 
     nums, k = [1, 2, 3], 3
-    print(sol.subarraySum(nums, k))
+    print(sol.subarraySum3(nums, k))

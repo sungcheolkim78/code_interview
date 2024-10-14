@@ -21,11 +21,33 @@ class Solution:
 
         return True
 
+    def isBipartite(self, graph: List[List[int]]) -> bool:
+        visited = {}
+        for i in range(len(graph)):
+            if i not in visited:
+                if self.check(graph, i, visited) == False:
+                    return False
+        return True
+
+    def check(self, graph, start, visited):
+        q = [(start, 1)]
+        while q:
+            pop, color = q.pop(0)
+            if pop in visited:
+                if visited[pop] != color:
+                    return False
+                continue
+            visited[pop] = color
+
+            for v in graph[pop]:
+                q.append((v, -color))
+        return True
+
 
 if __name__ == '__main__':
     graph = [[1,2,3],[0,2],[0,1,3],[0,2]]
     solution = Solution()
-    print(solution.is_bipartite(graph))
+    print(solution.isBipartite(graph))
 
     graph = [[1,3],[0,2],[1,3],[0,2]]
-    print(solution.is_bipartite(graph))
+    print(solution.isBipartite(graph))

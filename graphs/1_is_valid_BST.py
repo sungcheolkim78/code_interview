@@ -38,6 +38,25 @@ class Solution:
         self.prev = -math.inf
         return inorder(root)
 
+    def isValidBST3(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True
+
+        stack = [(root, -float('inf'), float('inf'))]
+        while stack:
+            node, low, high = stack.pop()
+
+            if not node:
+                continue
+
+            if node.val <= low or node.val >= high:
+                return False
+
+            stack.append((node.right, node.val, high))
+            stack.append((node.left, low, node.val))
+
+        return True
+
 
 if __name__ == '__main__':
     sol = Solution()

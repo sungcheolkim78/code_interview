@@ -60,3 +60,7 @@ Don’ts
 - Step 2 Propose high-level design and get buy-in: 10-15 minutes
 - Step 3 Design deep dive: 10-25 minutes
 - Step 4 Wrap up: 3-5 minutes
+
+## Resources
+
+- https://bytebytego.com/courses/system-design-interview/design-a-chat-system

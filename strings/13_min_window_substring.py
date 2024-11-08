@@ -1,3 +1,8 @@
+# Time: O(|s| + |t|)
+# Space: O(|s| + |t|)
+#
+# There is optimized solution with filtered s. Think about it!
+
 from typing import List
 from collections import Counter
 

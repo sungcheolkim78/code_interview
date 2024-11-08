@@ -31,3 +31,12 @@ Three things helped with retention:
 - But then we decided to start giving some structure to parts of the data, and we ended inventing what we called the Social Fashion Graph.
 - We ended up building our fashion ontology — a multilevel list of all descriptors that are needed to define an a fashion product or an outfit, and the relations among all these descriptors.
 - The end result is our current unsupervised learning model. A system that learns the meaning of an outfit, how to respond to a need, or the taste of an individual.
+
+## 3rd step: Algorithms
+
+recommender systems
+
+1. it was easy to capture that you liked a given song.
+1. it was easy to capture the sequence in which you and others would listen to that song.
+
+## Why are Google, Amazon and Alibaba getting into outfits? There is a race to capture a $123b market
